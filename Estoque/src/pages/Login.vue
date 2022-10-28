@@ -26,7 +26,7 @@
         color='primary'
         class="full-width  q-mt-md"
         flat
-
+        to="/register"
        />
    </q-form>
   </q-page>

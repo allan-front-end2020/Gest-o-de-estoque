@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 import useSupabase from 'src/boot/supabase'
 
-const user = ref
+const user = ref(null)
 export default function useAuthUser () {
   const { supabase } = useSupabase()
 
