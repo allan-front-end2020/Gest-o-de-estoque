@@ -19,6 +19,7 @@
         />
 
        </div>
+       <div >
        <q-btn
         label="Login"
         color='primary'
@@ -26,6 +27,15 @@
         rounded
         type="submit"
        />
+       <q-btn
+        label="Back"
+        color='primary'
+        class="full-width q-mt-md"
+        rounded
+        flat
+        :to="{name: 'login'}"
+       />
+      </div>
    </q-form>
 
   </q-page>

@@ -28,12 +28,19 @@
         flat
         to="/register"
        />
+       <q-btn
+        label="Forgot Password ?"
+        color='primary'
+        class="full-width  q-mt-md"
+        flat
+        :to="{name: 'forgot-password'}"
+       />
    </q-form>
   </q-page>
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, onMounted } from 'vue'
 import useAuthUser from 'src/composables/UseAuthUser'
 import { useRouter } from 'vue-router'
 
@@ -41,10 +48,16 @@ export default defineComponent({
   name: 'PageLogin',
   setup () {
     const router = useRouter()
-    const { login } = useAuthUser()
+    const { login, isLoggedIn } = useAuthUser()
     const form = ref({
       email: '',
       password: ''
+    })
+
+    onMounted(() => {
+      if (isLoggedIn) {
+        router.push({ name: 'me' })
+      }
     })
 
     const handleLogin = async () => {
@@ -52,7 +65,7 @@ export default defineComponent({
         await login(form.value)
         router.push({ name: 'me' })
       } catch (error) {
-        alert(error.message)
+        alert(error)
       }
     }
     return {
